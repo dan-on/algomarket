@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <a routerLink="/" class="logo">AlgoMarket</a>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end">
+        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+          <li *ngIf="!isAuth">
+            <a mat-button color="white" routerLink="/login">
+              <mat-icon color="white">share</mat-icon>
+              <span fxHide.xs>Издателям</span>
+            </a>
+          </li>
+          <li *ngIf="!isAuth">
+            <a mat-button color="white" routerLink="/login">
+              <mat-icon color="white">flash_on</mat-icon>
+              <span fxHide.xs>Клиентам</span>
+            </a>
+          </li>
+          <li *ngIf="!isAuth">
+            <a mat-button color="white" routerLink="/algo">
+              <mat-icon color="white">storefront</mat-icon>
+              <span fxHide.xs>Витрина алгоритмов</span>
+            </a>
+          </li>
+          <li *ngIf="!isAuth">
+            <a mat-button color="white" routerLink="/login">
+              <mat-icon color="white">account_circle</mat-icon>
+              <span fxHide.xs>Войти</span>
+            </a>
+          </li>
+
+          <li *ngIf="!isAuth">
+            <a mat-button color="white" routerLink="/register">
+              <mat-icon color="white">how_to_reg</mat-icon>
+              <span fxHide.xs>Регистрация</span>
+            </a>
+          </li>
+          
+          <li *ngIf="isAuth">
+            <a mat-button color="white" (click)="onLogout()">
+              <mat-icon color="white">exit_to_app</mat-icon>
+              <span fxHide.xs>Выйти</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    
+    <router-outlet></router-outlet>
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

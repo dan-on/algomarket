@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="heading">
+  Каталог подключенных алгоритмов
+</mat-toolbar>
+<div class="algo-list" fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+  <mat-card fxFlex="0 1 calc(33.2% - 32px)"  *ngFor="let algo of algorithms">
+    <mat-card-title>{{ algo.name }}</mat-card-title>
+    <mat-card-subtitle>AlgoMarketLab</mat-card-subtitle>
+    <img mat-card-image [src]="algo.image">
+    <mat-card-content>{{ algo.description }}</mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button [routerLink]="['/algo', algo.id]">Подробности</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

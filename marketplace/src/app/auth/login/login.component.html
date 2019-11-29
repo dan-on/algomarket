@@ -1,0 +1,38 @@
+<mat-toolbar color="primary" class="heading">
+  Вход в маркетплейс алгоритмов
+</mat-toolbar>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+  <mat-card class="margin-center" fxLayout="column" fxLayoutGap="32px">
+
+    <mat-card-title>
+      <mat-icon color="white">account_circle</mat-icon>
+      Вход в маркетплейс
+    </mat-card-title>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        placeholder="Электронная почта" 
+        formControlName="email">
+      <mat-error *ngIf="loginForm.get('email').hasError('email')">
+        Введите корректный адрес электронной почты
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email').hasError('required')">
+        Поле не может быть пустым
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        placeholder="Пароль" 
+        formControlName="password"
+        type="password">
+      <mat-error *ngIf="loginForm.get('password').hasError('required')">
+        Поле не может быть пустым
+      </mat-error>
+    </mat-form-field>
+    <button type="submit" color="primary" [disabled]="loginForm.invalid" mat-raised-button>Выполнить вход</button>
+
+  </mat-card>
+</form>

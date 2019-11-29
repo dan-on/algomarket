@@ -1,0 +1,56 @@
+<mat-toolbar color="primary" class="heading">
+  Регистрация нового пользователя
+</mat-toolbar>
+
+<form [formGroup]="registerForm" style="margin-top: 32px" (ngSubmit)="onSubmit()">
+  <mat-card class="margin-center" fxLayout="column" fxLayoutGap="32px" class="register-form">
+
+    <mat-card-title>
+      <mat-icon color="white">how_to_reg</mat-icon>
+      Новая учетная запись
+    </mat-card-title>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        placeholder="Имя" 
+        formControlName="name">
+      <mat-error *ngIf="registerForm.get('name').hasError('name')">
+        Введите корректный адрес электронной почты
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('name').hasError('required')">
+        Поле не может быть пустым
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input 
+        matInput 
+        placeholder="Электронная почта" 
+        formControlName="email">
+      <mat-error *ngIf="registerForm.get('email').hasError('email')">
+        Введите корректный адрес электронной почты
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('email').hasError('required')">
+        Поле не может быть пустым
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        placeholder="Пароль" 
+        formControlName="password"
+        type="password">
+      <mat-error *ngIf="registerForm.get('password').hasError('required')">
+        Поле не может быть пустым
+      </mat-error>
+      <mat-error *ngIf="registerForm.get('password').hasError('minLength')">
+        Пароль слишком короткий
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" color="primary" [disabled]="registerForm.invalid" mat-raised-button>Зарегистрироваться</button>
+
+  </mat-card>
+</form>
